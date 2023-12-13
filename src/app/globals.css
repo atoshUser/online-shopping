@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  html{
+    @apply h-screen scroll-smooth
+  }
+
+  body{
+    @apply h-full text-[15px] md:text-[18px] bg-white text-black 
+  }
+  
+}

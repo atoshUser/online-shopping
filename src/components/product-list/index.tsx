@@ -1,5 +1,6 @@
 import { IProductProps } from '@/interfaces'
 import React from 'react'
+import CardComponent from '../card'
 
 interface IProductList {
     products:IProductProps[]
@@ -7,7 +8,11 @@ interface IProductList {
 
 const ProductList:React.FC<IProductList> = ({products}) => {
   return (
-    <div>ProductList</div>
+       <ul className='px-1 md:px-5 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 auto-rows-[400px]'>
+          {products.map((card) => (
+             <CardComponent card={card} key={card.id}/>
+          ))}
+       </ul>
   )
 }
 

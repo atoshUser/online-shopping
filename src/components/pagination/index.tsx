@@ -44,7 +44,7 @@ const Pagination:React.FC<IPagination> = ({products}) => {
 <ProductList products={productsData}/>
         <ul className={`flex cursor-pointer  justify-center gap-1 text-xs font-medium`}>
         {listPage.map((item,idx) => (
-           <li  onClick={() => setPage(item)} className={`inline-flex h-8 w-8 items-center
+           <li  onClick={() => setPage(item)} className={`${item == page && 'bg-sky-500 text-white'} inline-flex h-8 w-8 items-center
             justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180`} key={item}>{item}</li>
         ))}
       

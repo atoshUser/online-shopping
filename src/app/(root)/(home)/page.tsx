@@ -1,22 +1,38 @@
 
+"use client"
 import Pagination from '@/components/pagination'
 import ProductList from '@/components/pagination'
 import { IProductProps, IRegisterProps } from '@/interfaces'
 import { redirect } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Home = async () => {
-  
-   const res = await fetch(`https://api.escuelajs.co/api/v1/products`)
-   const products:IProductProps[] = await res.json()
-   
-   
-      if (typeof window !== 'undefined') {
-        let isExistUser:IRegisterProps  = JSON.parse(localStorage.getItem('user') as string) || {} as IRegisterProps    
-       if(!Object.keys(isExistUser).length){
-        redirect('register-form')
-         }
+
+
+const Home =  () => {
+    const [products,setProducts] = useState<IProductProps[]>()
+
+    let isExistUser:IRegisterProps  = JSON.parse(JSON.stringify(localStorage.getItem('user')) as string) || {} as IRegisterProps    
+    if(!Object.keys(isExistUser).length){
+     redirect('register-form')
       }
+
+
+  const getProducts = async () => {
+    const res = await fetch(`https://fakestoreapi.com/products`)
+     const data:IProductProps[]  = await res.json()
+     setProducts(data)
+  }
+
+  
+   
+   useEffect(() => {
+     getProducts()
+    
+   },[])
+   
+     
+        
+    
     
      
   return (

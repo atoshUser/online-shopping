@@ -12,18 +12,16 @@ export interface IRegisterProps {
 export interface IProductProps {
     id:number
     title:string
-    price:number
+    price:string
     description:string
-    images:string[]
-    creationAt:string
-    updatedAt:string
-    category:ICategory
+    image:string
+   
 }
 
-interface ICategory {
-    id:number
-    name:string
-    image:string
-    creationAt:string
-    updatedAt:string
-}
+// interface ICategory {
+//     id:number
+//     name:string
+//     image:string
+//     creationAt:string
+//     updatedAt:string
+// }

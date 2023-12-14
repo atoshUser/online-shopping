@@ -7,3 +7,23 @@ export interface IRegisterProps {
     email:string
     password:string
 }
+
+
+export interface IProductProps {
+    id:number
+    title:string
+    price:number
+    description:string
+    images:string[]
+    creationAt:string
+    updatedAt:string
+    category:ICategory
+}
+
+interface ICategory {
+    id:number
+    name:string
+    image:string
+    creationAt:string
+    updatedAt:string
+}

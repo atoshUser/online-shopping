@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+*{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
 @layer base {
   *{
     @apply m-0 p-0 box-border
@@ -15,4 +20,9 @@
     @apply flex flex-col  h-full text-[15px] md:text-[18px] bg-white text-black 
   }
 
+}
+@layer components {
+  .myBtn{
+  @apply px-2 py-1 md:px-3 md:py-2 text-[14px] md:text-[18px]
+  }
 }

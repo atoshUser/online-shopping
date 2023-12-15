@@ -21,9 +21,11 @@ const Home =  () => {
     const res = await fetch(`https://fakestoreapi.com/products`)
      const data:IProductProps[]  = await res.json()
      setProducts(data)
+     console.log(data);
+     
   }
 
-  
+     
    
    useEffect(() => {
      getProducts()

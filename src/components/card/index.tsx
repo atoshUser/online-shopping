@@ -14,7 +14,7 @@ const CardComponent:React.FC<ICardProps> = ({card}) => {
     <Link href={`/product-modal/${card.id}`}>
     
     <article className="overflow-hidden  h-full rounded-lg shadow transition hover:shadow-lg">
- <div className='relative h-56 w-full "'>
+ <div className='relative h-[150px] md:h-56 w-full "'>
    <CustomImageComponent card={card}/>
  </div>
 
@@ -29,7 +29,7 @@ const CardComponent:React.FC<ICardProps> = ({card}) => {
       <h3 className="mt-0.5 truncate text-lg text-gray-900">{card.title}</h3>
    
 
-    <p className="mt-2 line-clamp-4 md:line-clamp-3 text-sm/relaxed text-gray-500">
+    <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
      {card.description}
     </p>
   </div>

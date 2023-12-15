@@ -20,8 +20,8 @@ const Pagination:React.FC<IPagination> = ({products}) => {
      
      
       useEffect(() => {
-        const firstIndexOf = page * perPage
-        const lastIndexOf = firstIndexOf + 10
+        const firstIndexOf = page == 1 ? 0 : page * perPage - 10
+        const lastIndexOf = page == 1 ? 10 : firstIndexOf + 10
         const data = products.slice(firstIndexOf,lastIndexOf) 
         setProductsData(data)
       },[page])     
@@ -45,8 +45,8 @@ const Pagination:React.FC<IPagination> = ({products}) => {
 
         <ul className={`flex cursor-pointer  justify-center gap-1 text-xs font-medium`}>
         {listPage.map((item,idx) => (
-           <li  onClick={() => setPage(item)} className={`${item == page && `bg-sky-700 text-white`} inline-flex h-8 w-8 items-center
-            justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180`} key={item}>{item}</li>
+           <li  onClick={() => setPage(item)} className={`${item == page ? `bg-sky-700 text-white` : `bg-white`} inline-flex h-8 w-8 items-center
+            justify-center rounded border border-gray-100  text-gray-900 rtl:rotate-180`} key={item}>{item}</li>
         ))}
       
       </ul>

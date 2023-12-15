@@ -15,7 +15,12 @@ export interface IProductProps {
     price:string
     description:string
     image:string
-   
+    category:string
+    quantity:number
+    rating:{
+        rate:number
+        count:number
+    }
 }
 
 // interface ICategory {

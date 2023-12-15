@@ -32,7 +32,7 @@ const ProductModal =  ({params:{id}}:{params:{id:string}}) => {
                 <div className='relative w-full h-[250px] md:min-w-[250px] md:h-full'>
                    <CustomImageComponent card={product}/>
                 </div>
-                <div className='flex flex-col overflow-y-auto py-3 md:py-4 md:px-4'>
+                <div className='flex flex-col overflow-y-auto py-3 px-3 md:py-4 md:px-4'>
                   <h3 className='text-[16px] md:text-[20px] font-medium'>{product.title}</h3>
                   <span className='font-medium text-[15px] md:text-[18px]
                   '>{Number(product.price).toLocaleString('en-US',{style:'currency',currency:'USD'})}</span>
@@ -41,7 +41,7 @@ const ProductModal =  ({params:{id}}:{params:{id:string}}) => {
                   </p>
                   <div className='flex flex-col space-y-3'>
                     <button className='myBtn border rounded-md border-indigo-600 text-sky-600'>Add</button>
-                     <button className='myBtn bg-indigo-600 rounded-md text-white border border-transparent
+                     <button onClick={() => window.location.reload()} className='myBtn bg-indigo-600 rounded-md text-white border border-transparent
                       hover:border-indigo-600  
                       hover:bg-transparent  hover:text-indigo-700 '>Show all</button>
                   </div>

@@ -11,6 +11,12 @@ const MyProducts = () => {
        const [products,setProducts ] = useState([] as IProductProps[])  
         const [price,setPrice] = useState<number>()
 
+        const totalPrice = () => {
+          const total =  products.reduce((total,curVal) => {
+               return total + (Number(curVal.price) * curVal.quantity)
+           },0)
+           return total
+        }
 
         const handleProduct = (product:IProductProps,style: 'add' | 'remove') => {
             switch(style){
@@ -22,7 +28,7 @@ const MyProducts = () => {
             }
             const data = JSON.parse(localStorage.getItem('products') as string ) as IProductProps[] 
             setProducts(data)
-        
+            totalPrice()
         }
 
     useEffect(() => {
@@ -46,7 +52,7 @@ const MyProducts = () => {
           {products.map((card) => (
 
 <div key={card.id} className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-<div className="w-full rounded-lg sm:w-40 relative">
+<div className="w-full h-[150px] md:h-auto rounded-lg sm:w-40 relative">
    <CustomImageComponent card={card} />
 </div>
      <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
@@ -63,7 +69,7 @@ const MyProducts = () => {
          <div className="flex items-center space-x-4">
            <p className="text-sm line-through decoration-2 decoration-red-500 font-bold">{(Number(card.price) * card.quantity).toLocaleString('en-US',{style:'currency',currency:'USD'})}</p>
              <span className='self-start text-sm text-green-500 font-bold'>15%</span>
-            <p className='font-bold text-sm/snug'> {(Math.floor((Number(card.price) * card.quantity) - (Number(card.price) * card.quantity) * 0.15)).toLocaleString('en-US',{style:'currency',currency:'USD'})}</p>
+            <p className='font-bold text-sm/snug'> {(Math.floor((Number(card.price) * card.quantity) - ((Number(card.price) * card.quantity) * 0.15))).toLocaleString('en-US',{style:'currency',currency:'USD'})}</p>
           <MdDelete className={`text-red-500 w-7 h-7 `}/>
          </div>
        </div>
@@ -79,17 +85,21 @@ const MyProducts = () => {
       <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
         <div className="mb-2 flex justify-between">
           <p className="text-gray-700">Subtotal</p>
-          <p className="text-gray-700">$129.99</p>
+          <p className="text-gray-700">{totalPrice().toLocaleString('en-US',{style:'currency',currency:'USD'})}</p>
+        </div>
+        <div className="mb-2 flex justify-between">
+          <p className="text-gray-700">Shipping</p>
+          <p className="text-gray-700">$0.00</p>
         </div>
         <div className="flex justify-between">
-          <p className="text-gray-700">Shipping</p>
-          <p className="text-gray-700">$4.99</p>
+          <p className="text-gray-700">Discount</p>
+          <p className="text-gray-700">15%</p>
         </div>
         <hr className="my-4" />
         <div className="flex justify-between">
           <p className="text-lg font-bold">Total</p>
           <div className="">
-            <p className="mb-1 text-lg font-bold">$134.98 USD</p>
+            <p className="mb-1 text-lg font-bold">{totalPrice().toLocaleString('es-US',{style:'currency',currency:'USD'})} USD</p>
             <p className="text-sm text-gray-700">including VAT</p>
           </div>
         </div>

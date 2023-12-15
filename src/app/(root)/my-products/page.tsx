@@ -33,12 +33,8 @@ const MyProducts = () => {
 
     useEffect(() => {
    const data = JSON.parse(localStorage.getItem('products') as string ) as IProductProps[] 
-   
-   
    setProducts(data)
-    
-
-    },[setProduct])
+    },[])
      
  
   

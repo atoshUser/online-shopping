@@ -3,32 +3,41 @@
 import Pagination from '@/components/pagination'
 import ProductList from '@/components/pagination'
 import { IProductProps, IRegisterProps } from '@/interfaces'
-import { redirect } from 'next/navigation'
+import { redirect,useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 
 
 const Home =  () => {
     const [products,setProducts] = useState<IProductProps[]>()
+    const router = useRouter()
 
-    let isExistUser:IRegisterProps  = JSON.parse(JSON.stringify(localStorage.getItem('user')) as string) || {} as IRegisterProps    
-    if(!Object.keys(isExistUser).length){
-     redirect('register-form')
-      }
+  
+    
+    
+    // if(!Object.keys(isExistUser).length){
+    //  redirect('register-form')
+    //   }
 
 
   const getProducts = async () => {
     const res = await fetch(`https://fakestoreapi.com/products`)
      const data:IProductProps[]  = await res.json()
      setProducts(data)
-     console.log(data);
+    
      
   }
 
      
    
    useEffect(() => {
-     getProducts()
+    let isExistUser:IRegisterProps  = JSON.parse(JSON.stringify(localStorage.getItem('user')) as string) || {} as IRegisterProps    
+       if (!Object.keys(isExistUser).length) {
+         router.push('/register-form')
+       }  
+    
+
+    getProducts()
     
    },[])
    

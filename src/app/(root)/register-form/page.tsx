@@ -14,12 +14,12 @@ const RegisterPage = () => {
   return (
     <div className='relative'>
        <div className='absolute bg-black px-3  md:px-0 text-black inset-0 h-screen flex justify-center items-center'>
-        <div className="border-2  w-[450px] rounded-md  bg-white p-2">
+        <div className="border-2  w-[450px] space-y-3 h-[250px] rounded-md  bg-white p-2">
             <h2 className='mb-2 text-indigo-600 font-bold text-[20px] md:text-[30px]'>Register form</h2>
-            <form action="post" className='flex flex-col space-y-3' onSubmit={handleSubmit((data) => submitForm(data))}>
+            <form action="post" className='flex flex-col space-y-6' onSubmit={handleSubmit((data) => submitForm(data))}>
   
 
-<div className='flex flex-col'>
+<div className='flex flex-col '>
 <label
   htmlFor="Username"
   className="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
@@ -29,7 +29,7 @@ const RegisterPage = () => {
     {...register('username',{required:'Name required',minLength:{message:'Min character 5',value:5}})}
     id="Username"
     autoComplete='off'
-    className="peer py-1 text-[14px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+    className="peer py-1  pl-2 text-[14px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
     placeholder="Username"
   />
  
@@ -51,7 +51,7 @@ const RegisterPage = () => {
     id="email"
     {...register('email',{required:'Email required!',})}
     autoComplete='off'
-    className="peer py-1 text-[14px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+    className="peer pl-2 py-1 text-[14px] border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
     placeholder="example@gmail.com"
   />
   
@@ -74,7 +74,7 @@ const RegisterPage = () => {
     {...register('password',{required:'Password required!'
     ,minLength:{message:'Password should be more than 5 character',value:5}})}
     autoComplete='off'
-    className="peer border-none text-[14px] py-1 bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+    className="peer pl-2 border-none text-[14px] py-1 bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
     placeholder="security key"
   />
   
